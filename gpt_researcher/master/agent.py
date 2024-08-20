@@ -11,6 +11,7 @@ from gpt_researcher.master.actions import *
 from gpt_researcher.memory import Memory
 from gpt_researcher.utils.enum import ReportSource, ReportType, Tone
 
+print('Test')
 
 class GPTResearcher:
     """

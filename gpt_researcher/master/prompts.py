@@ -84,8 +84,224 @@ Please follow all of the following guidelines in your report:
 
 Please do your best, this is very important to my career.
 Assume that the current date is {date.today()}.
+
 """
 
+
+def generate_seo_article_prompt(
+    question: str,
+    context,
+    report_source: str,
+    report_format="Associated Press Inverted Pyramid Style",
+    total_words=1500,
+    tone=None,
+):
+    """Generates the report prompt for the given question and research summary.
+    Args: question (str): The question to generate the report prompt for
+            research_summary (str): The research summary to generate the report prompt for
+    Returns: str: The report prompt for the given question and research summary
+    """
+
+    reference_prompt = ""
+    if report_source == ReportSource.Web.value:
+        reference_prompt = f"""
+You MUST write all used source urls at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each.
+"""
+    else:
+        reference_prompt = f"""
+You MUST write all used source document names at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each."
+"""
+
+    tone_prompt = f"Write the report in a {tone.value} tone." if tone else ""
+
+    return f"""
+Information: "{context}"
+---
+Using the above information, answer the following query or task: "{question}" in a detailed report --
+The report should focus on the answer to the query, should be structured in the inverted pyramid style, be extremely helpful to the reader, informative, 
+in-depth, and comprehensive, with facts and numbers if available and a minimum of {total_words} words.
+You should strive to write the report as long as you can using all relevant and necessary information provided.
+The reader should feel satisfied after reading the article and have all the information they need.
+
+Please follow all of the following guidelines in your report:
+- You MUST determine your own concrete and valid opinion based on the given information. Do NOT defer to general and meaningless conclusions.
+- You MUST write the report with basic html syntax (using only <h1>, <h2>, <h3>, <h4>, <strong>, <i>, <li>, <ul>, <p>) and in the {report_format} format.
+- Use 1 <h1> tag, approximately 15 <h2> tags, approximately 15 <h3> tags, approximately 15 <h4> tags, about 15 <i> tags, about 5 <strong> tags, and about 15 <ul> .
+- Use a helpful tone.emphasizing Experience, Expertise, Authority, and Trustworthiness (EEAT). Ensure that the content reflects deep, first-hand knowledge and experience with the subject matter. 
+Consider the credibility and reliability of the information provided, making sure it would be trustworthy to readers who rely on this content for informed decision-making. 
+For example, when discussing a product, share personal insights, experiences, or professional background that establish why your opinion or advice is particularly valuable. 
+The goal is to create content that readers would find reliable, as if it were written by someone with a wealth of relevant experience and expertise.
+- Add 5 FAQ's at the bottom of the article to maximize helpfulness.
+- Don't forget to add a reference list at the end of the report in {report_format} format and full url links without hyperlinks.
+- {reference_prompt}
+- {tone_prompt}
+
+Please do your best, this is very important to my career.
+Assume that the current date is {date.today()}.
+"""
+
+def generate_ship_review_prompt(
+    question: str,
+    context,
+    report_source: str,
+    report_format="Associated Press Inverted Pyramid Style",
+    total_words=1500,
+    tone=None,
+):
+    """Generates the report prompt for the given question and research summary.
+    Args: question (str): The question to generate the report prompt for
+            research_summary (str): The research summary to generate the report prompt for
+    Returns: str: The report prompt for the given question and research summary
+    """
+
+    reference_prompt = ""
+    if report_source == ReportSource.Web.value:
+        reference_prompt = f"""
+You MUST write all used source urls at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each.
+Every url should be hyperlinked: [url website](url)
+"""
+    else:
+        reference_prompt = f"""
+You MUST write all used source document names at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each."
+"""
+
+    tone_prompt = f"Write the report in a {tone.value} tone." if tone else ""
+
+    return f"""
+Information: "{context}"
+---
+Using the above information, answer the following query or task: "{question}" in a detailed report --
+The report should focus on the answer to the query, be helpful, informative, 
+in-depth, and comprehensive, with facts and numbers if available and a minimum of {total_words} words.
+You should strive to write the report as long as you can using all relevant and necessary information provided.
+
+Follow all of the following guidelines in your report:
+- You MUST determine your own concrete and valid opinion based on the given information. Do NOT defer to general and meaningless conclusions.
+- Use an unbiased and journalistic tone.
+- Don't forget to add a reference list at the end of the report in {report_format} format and full url links without hyperlinks.
+- Write for an audience of high-society (think British Aristocracy) who are potential cruise passengers trying to decide which cruise to take.
+- Be comprehensive and detailed in your review, covering all aspects of the ship and the cruise line so that a traveler doesn't have to look anywhere else for information.
+- Use official cruise line websites, as your primary source of information, because they are the most up-to-date and reliable. 
+- {reference_prompt}
+- {tone_prompt}
+
+Use this format in your response:
+<h2>In depth description of the ship
+<h2> What differentiates this ship from other similar ships
+<h2> Who would most enjoy this ship, what types of travelers is it for?
+<h3> Families
+<h4> Kids 
+<h4> Handicapped access
+<h2> The Cruise Line
+<h3> reputation of the cruise line
+<h3> types of passengers
+<h4> dress code
+ Highlighted destinations
+<h2> Itineraries 
+<h3> Day excursions
+<h4> Highlights
+<h2> Cabins & suites
+<h3> Cabin 1
+<h4> pros and cons of this cabin type
+<h3> cabins to avoid
+<h2> Deck plans 
+<h3> Deck 1
+<h4> Deck 1 highlights
+<h3> Deck 2
+<h4> Deck 2 highlights
+<h2> Ship reviews
+<h3> Meta review about common comments
+<h3> What types of travelers like the ship? What were their favorite parts?
+<h2> Restaurants and Dining
+<h3> Entertainment
+<h3> Onboard experiences
+<h2> Insider tips that only a guide would know
+<h3> Tip 1
+<h2> Conclusion
+<h2> Call to action to book a cruise on this ship
+
+Please do your best, this is very important to my career.
+Assume that the current date is {date.today()}.
+"""
+
+def generate_luxury_cruise_destination_prompt(
+    question: str,
+    context,
+    report_source: str,
+    report_format="Associated Press Inverted Pyramid Style",
+    total_words=1500,
+    tone=None,
+):
+    """Generates the report prompt for the given question and research summary.
+    Args: question (str): The question to generate the report prompt for
+            research_summary (str): The research summary to generate the report prompt for
+    Returns: str: The report prompt for the given question and research summary
+    """
+
+    reference_prompt = ""
+    if report_source == ReportSource.Web.value:
+        reference_prompt = f"""
+You MUST write all used source urls at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each.
+Every url should be hyperlinked: [url website](url)
+"""
+    else:
+        reference_prompt = f"""
+You MUST write all used source document names at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each."
+"""
+
+    tone_prompt = f"Write the report in a {tone.value} tone." if tone else ""
+
+    return f"""
+Information: "{context}"
+---
+Using the above information, answer the following query or task: "{question}" in a detailed report --
+The report should focus on the answer to the query, be helpful, informative, 
+in-depth, and comprehensive, with facts and numbers if available and a minimum of {total_words} words.
+You should strive to write the report as long as you can using all relevant and necessary information provided.
+
+Follow all of the following guidelines in your report:
+- You MUST determine your own concrete and valid opinion based on the given information. Do NOT defer to general and meaningless conclusions.
+- Use an unbiased and journalistic tone.
+- Don't forget to add a reference list at the end of the report in {report_format} format and full url links without hyperlinks.
+- Write for an audience of high-society (think British Aristocracy) who are potential travelers deciding where to travel.
+- Be comprehensive and detailed in your review, covering all aspects of the destination so that a traveler doesn't have to look anywhere else for information.
+- Use official cruise line websites, as your primary source of information, because they are the most up-to-date and reliable. 
+- {reference_prompt}
+- {tone_prompt}
+
+
+- H1 [Destination] luxury cruises
+- Introduction: Catching introduction with relevant info about Japan and luxury cruises to Japan
+- H2 Why Travel to [Destination]
+- (4 reasons that give useful background information)
+- H3 Culture
+- H3 History / Nature + Wildlife depending on the destination
+- H3 Food
+- H3 Landscapes
+- H2 Best time to travel to (...)
+- H2 [Destination]'s Top Sites: What to See in [Destination]
+- ( slideshow with images, no more than 5 of the main sites visited in itineraries with very different routes so that clients feel compelled to choose longer itineraries. Names of sites in H3)
+- H2 Reputation section: Why Travel With us?
+- (Three reasons. Ex: Reliability, safety, curated experiences, etc (to be determined by client))
+- H4 Reliability
+- H4 Safety
+- H4 Curated experiences
+- H2 Luxury Cruises FAQs for (Japan)
+- (no more than 10 for all destinations to keep it standardized, questions may vary of destination has something too particular)
+- H4 Do I need a visa?
+- H4 Is it safe?
+- H4 Best time to travel?
+- H4 What is the weather like>
+- H4 How long should I stay there?
+- H4 How soon should I book my cruise?
+- H4 How do I choose the right cruise for me?
+- H4 What should I pack?
+- H4 How do I get there?  
+
+
+Please do your best, this is very important to my career.
+Assume that the current date is {date.today()}.
+"""
 
 def generate_resource_report_prompt(
     question, context, report_source: str, report_format="apa", tone=None, total_words=1000

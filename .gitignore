@@ -2,6 +2,7 @@
 .env
 .venv
 .envrc
+.venv_iresearch
 
 #Ignore Virtual Env
 env/

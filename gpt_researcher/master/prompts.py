@@ -586,4 +586,5 @@ def get_prompt_by_report_type(report_type):
             UserWarning,
         )
         prompt_by_type = report_type_mapping.get(default_report_type)
+
     return prompt_by_type

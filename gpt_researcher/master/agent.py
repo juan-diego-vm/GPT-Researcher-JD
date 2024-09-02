@@ -75,8 +75,10 @@ class GPTResearcher:
         if isinstance(tone, dict):
             print(f"Invalid tone format: {tone}. Setting to default Tone.Objective.")
             self.tone = Tone.Objective
+            print(f'\n\n\nself.tone (1): {self.tone}\n\n\n')
         elif isinstance(tone, str):
             self.tone = Tone[tone]
+            print(f'\n\n\n self.tone (2): {self.tone}\n\n\n')
         else:
             self.tone = tone
 
@@ -102,7 +104,7 @@ class GPTResearcher:
             await stream_output(
                 "logs",
                 "starting_research",
-                f"🔎 Starting the research task for '{self.query}'...",
+                f"🔎 Starting the research task for '{self.query}' with {self.tone.name} tone ...",
                 self.websocket,
             )
 

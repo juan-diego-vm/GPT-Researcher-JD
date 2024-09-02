@@ -39,10 +39,10 @@ class Tone(Enum):
     Descriptive = (
         "Descriptive (detailed depiction of phenomena, experiments, or case studies)"
     )
-    Critical = "Critical (judging the validity and relevance of the research and its conclusions)"
+    Critical = "Critical (judging the validity and relevance of the research and its conclusions"
     Comparative = "Comparative (juxtaposing different theories, data, or methods to highlight differences and similarities)"
     Speculative = "Speculative (exploring hypotheses and potential implications or future research directions)"
-    Reflective = "Reflective (considering the research process and personal insights or experiences)"
+    # Reflective = "Reflective (considering the research process and personal insights or experiences)"
     Narrative = (
         "Narrative (telling a story to illustrate research findings or methodologies)"
     )
@@ -51,3 +51,11 @@ class Tone(Enum):
     Pessimistic = (
         "Pessimistic (focusing on limitations, challenges, or negative outcomes)"
     )
+    
+    # MyTrip Exclusive
+    Authoritative = "Authoritative (EEAT, Emphasizing First-hand Experience, Expertise, Authority, and Trustworthiness)"
+    Inspirational = "Inspirational (Motivating and uplifting, encouraging readers to take action or pursue their goals)"
+    Reflective = "Reflective (Thoughtful and introspective, encouraging readers to ponder and consider their own experiences or views)"
+    Technical = "Technical (Detailed and precise, using industry-specific terminology for expert audiences)"
+    Conversational = "Conversational (Friendly and relatable, engaging the reader in a dialogue as if speaking directly to them)"
+    Urgent = "Urgent (Pressing and immediate, creating a sense of urgency to prompt quick action or decision-making)"

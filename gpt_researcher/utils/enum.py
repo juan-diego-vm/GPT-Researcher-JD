@@ -8,6 +8,11 @@ class ReportType(Enum):
     CustomReport = "custom_report"
     DetailedReport = "detailed_report"
     SubtopicReport = "subtopic_report"
+    
+    # MyTrip Exclusive
+    SEOArticle = 'seo_article'
+    ShipReview = 'ship_review'
+    LuxuryCruiseDestination = 'luxury_cruise_destination'
 
 
 class ReportSource(Enum):

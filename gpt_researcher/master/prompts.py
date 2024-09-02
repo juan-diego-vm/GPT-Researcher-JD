@@ -568,6 +568,10 @@ report_type_mapping = {
     ReportType.OutlineReport.value: generate_outline_report_prompt,
     ReportType.CustomReport.value: generate_custom_report_prompt,
     ReportType.SubtopicReport.value: generate_subtopic_report_prompt,
+    # MyTrip Exclusive
+    ReportType.SEOArticle.value: generate_seo_article_prompt,
+    ReportType.ShipReview.value: generate_ship_review_prompt,
+    ReportType.LuxuryCruiseDestination: generate_luxury_cruise_destination_prompt
 }
 
 

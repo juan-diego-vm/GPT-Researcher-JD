@@ -172,7 +172,7 @@ class GPTResearcher:
             await stream_output(
                 "logs",
                 "task_summary_coming_up",
-                f"✍️ Writing summary for research task: {self.query} (this may take a few minutes)...",
+                f"✍️ Writing summary for research task: {self.query} (this may take a few minutes)...\nwith tone: {self.tone}",
                 self.websocket,
             )
 
